@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dev check | BloodConnect Alert</title>
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <main id="main" class="container stack">
+    <h1>Design tokens check</h1>
+    <p class="muted">Temporary page. Delete it before the demo.</p>
+
+    <section class="card">
+      <h2>Buttons</h2>
+      <div class="row">
+        <button class="btn btn-primary" type="button">Submit a blood request</button>
+        <button class="btn btn-secondary" type="button">Cancel</button>
+        <button class="btn btn-primary" type="button" disabled>Disabled</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Status badges</h2>
+      <div class="row">
+        <span class="badge badge-green">Approved</span>
+        <span class="badge badge-amber">Pending verification</span>
+        <span class="badge badge-red">Rejected</span>
+        <span class="badge badge-blue">Simulated</span>
+        <span class="badge badge-grey">Expired</span>
+      </div>
+      <p class="muted" style="margin-top:16px">Icons are added on Day 2, session C.</p>
+    </section>
+
+    <section class="card">
+      <h2>Form field</h2>
+      <div class="field">
+        <label for="phone">Contact phone</label>
+        <div class="hint">Example: 01712345678</div>
+        <input id="phone" type="tel" value="Rahim Uddin">
+      </div>
+      <div class="field has-error">
+        <label for="name">Patient name</label>
+        <input id="name" value="">
+        <div class="field-error">Patient name is required.</div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

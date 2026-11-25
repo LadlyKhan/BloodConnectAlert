@@ -1,0 +1,42 @@
+/* Buttons */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--s1);
+  min-height: var(--tap); padding: 0 var(--s3); font: inherit; font-weight: 600;
+  border: 1px solid transparent; border-radius: var(--radius-btn); cursor: pointer; text-decoration: none;
+}
+.btn-primary { background: var(--crimson); color: #fff; }
+.btn-primary:hover { background: var(--crimson-dark); }
+.btn-secondary { background: var(--surface); color: var(--text); border-color: var(--border); }
+.btn-secondary:hover { background: var(--bg); }
+.btn:disabled { opacity: .55; cursor: not-allowed; }
+
+/* Cards */
+.card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius-card); box-shadow: var(--shadow); padding: var(--s3);
+}
+
+/* Badges: always icon + text, never colour alone (decision 6) */
+.badge {
+  display: inline-flex; align-items: center; gap: 4px; padding: 2px var(--s1);
+  border: 1px solid currentColor; border-radius: 999px; font-size: var(--fs-sm); font-weight: 600;
+}
+.badge-green { color: var(--green); background: var(--green-bg); }
+.badge-amber { color: var(--amber-text); background: var(--amber-bg); }
+.badge-blue  { color: var(--blue); background: var(--blue-bg); }
+.badge-red   { color: #B42318; background: var(--error-bg); }
+.badge-grey  { color: var(--text-muted); background: var(--grey-bg); }
+
+/* Form fields */
+.field { margin-bottom: var(--s2); }
+.field label { display: block; margin-bottom: 4px; font-weight: 600; }
+.field .hint { margin-bottom: 4px; font-size: var(--fs-sm); color: var(--text-muted); }
+.field input, .field select, .field textarea {
+  width: 100%; min-height: var(--tap); padding: var(--s1) 12px; font: inherit; color: var(--text);
+  background: var(--surface); border: 1px solid #8A94A0; border-radius: var(--radius-btn);
+}
+.field textarea { min-height: 96px; }
+.field.has-error input, .field.has-error select, .field.has-error textarea { border: 2px solid var(--error); }
+.field-error { display: flex; gap: 6px; margin-top: 4px; color: var(--error); font-size: var(--fs-sm); font-weight: 600; }
+.field-error[hidden] { display: none; }
+.field-error svg { width: 16px; height: 16px; flex: none; margin-top: 2px; }
