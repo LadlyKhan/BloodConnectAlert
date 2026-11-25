@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Supabase Connection Check</title>
+</head>
+<body>
+
+  <h1>BloodConnect Alert</h1>
+  <h2>Supabase Connection Check</h2>
+
+  <p id="status">Checking connection...</p>
+
+  <!-- Supabase JavaScript library -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <!-- Your project configuration -->
+  <script src="js/supabase-config.js"></script>
+
+  <!-- Create the Supabase client -->
+  <script src="js/supabase-client.js"></script>
+
+  <script>
+    async function checkConnection() {
+      const status = document.getElementById("status");
+
+      try {
+        const url = window.SUPABASE_CONFIG.url;
+        const key = window.SUPABASE_CONFIG.publishableKey;
+
+        const response = await fetch(url + "/auth/v1/health", {
+          headers: {
+            apikey: key,
+            Authorization: "Bearer " + key
+          }
+        });
+
+        if (response.ok) {
+          status.textContent =
+            "Success! BloodConnect Alert is connected to Supabase.";
+        } else {
+          status.textContent =
+            "Supabase responded, but the request returned status: " +
+            response.status;
+        }
+
+      
+} catch (error) {
+  status.textContent = "Error: " + error.message;
+  console.error(error);
+}
+
+    }
+
+    checkConnection();
+  </script>
+
+</body>
+</html>

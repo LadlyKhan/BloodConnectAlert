@@ -44,7 +44,14 @@
 
   --tap: 44px;                  /* minimum tap target */
   --bar-h: 56px;                /* top bar and bottom bar height */
+    /* Aliases used by the Day 2C CSS */
+  --text-primary: var(--text);
+  --surface-primary: var(--surface);
+  --surface-secondary: var(--grey-bg);
+  --border-color: var(--border);
+  --color-primary: var(--crimson);
 }
+
 
 /* Breakpoints (CSS variables don't work in media queries, so use these numbers directly):
    768px and 1024px. Minimum supported width: 360px. */

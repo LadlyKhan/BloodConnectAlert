@@ -49,5 +49,112 @@
       </div>
     </section>
   </main>
+
+
+<!-- Day 2C Shared Utilities Test -->
+
+<section class="dev-test">
+    <h2>BloodConnect Shared Utilities Test</h2>
+
+    <div class="bc-demo-banner">
+        Demo data – Testing environment
+    </div>
+
+    <h3>1. Role Navigation</h3>
+    <select id="test-role">
+        <option value="donor">Donor</option>
+        <option value="requester">Requester</option>
+        <option value="verifier">Verifier</option>
+        <option value="hospital">Hospital</option>
+        <option value="blood_bank">Blood Bank</option>
+        <option value="admin">Administrator</option>
+    </select>
+
+    <div id="test-navigation" class="bc-nav-links"></div>
+
+    <h3>2. Toast Notifications</h3>
+    <button onclick="BC.toast('Success message!', 'success')">Success</button>
+    <button onclick="BC.toast('Error message!', 'error')">Error</button>
+    <button onclick="BC.toast('Warning message!', 'warning')">Warning</button>
+    <button onclick="BC.toast('Information message!', 'info')">Info</button>
+
+    <h3>3. Form Validation</h3>
+    <form id="test-form" novalidate>
+        <label>Name</label>
+        <input type="text" required placeholder="Enter your name">
+
+        <label>Email</label>
+        <input type="email" required placeholder="Enter email">
+
+        <label>Bangladesh Phone</label>
+        <input type="tel" required placeholder="017XXXXXXXX">
+
+        <button type="submit">Test Validation</button>
+    </form>
+
+    <h3>4. Date and Time</h3>
+    <p id="test-date"></p>
+    <p id="test-time"></p>
+    <p id="test-relative"></p>
+
+    <h3>5. Icons and Status Badges</h3>
+    <span class="bc-status-badge">
+        <span id="test-icon"></span>
+        Verified
+    </span>
+
+    <h3>6. Skeleton Loader</h3>
+    <div class="bc-skeleton bc-skeleton-title"></div>
+    <div class="bc-skeleton bc-skeleton-text"></div>
+    <div class="bc-skeleton bc-skeleton-card"></div>
+</section>
+
+<!-- Load shared JavaScript in dependency order -->
+<script src="js/i18n.js"></script>
+<script src="js/icons.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/validate.js"></script>
+<script src="js/format.js"></script>
+
+<script>
+    // Navigation test
+    const roleSelect = document.getElementById("test-role");
+
+    function updateTestNavigation() {
+        BC.buildNavigation(
+            roleSelect.value,
+            "test-navigation"
+        );
+    }
+
+    roleSelect.addEventListener("change", updateTestNavigation);
+    updateTestNavigation();
+
+    // Form validation test
+    BC.initValidation("#test-form");
+
+    // Date and time test
+    const now = new Date();
+
+    document.getElementById("test-date").textContent =
+        "Date: " + BC.formatDate(now);
+
+    document.getElementById("test-time").textContent =
+        "Time: " + BC.formatTime(now);
+
+    document.getElementById("test-relative").textContent =
+        "Last updated: " + BC.timeAgo(
+            new Date(Date.now() - 300000)
+        );
+
+    // Icon test
+    document.getElementById("test-icon").innerHTML =
+        BC.icon("check", 14);
+</script>
+</body>
+</html>
+
+
 </body>
 </html>

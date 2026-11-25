@@ -40,3 +40,270 @@
 .field-error { display: flex; gap: 6px; margin-top: 4px; color: var(--error); font-size: var(--fs-sm); font-weight: 600; }
 .field-error[hidden] { display: none; }
 .field-error svg { width: 16px; height: 16px; flex: none; margin-top: 2px; }
+
+/* =========================================
+   BloodConnect Alert - Shared UI Components
+   Day 2C
+========================================= */
+
+/* ---------- Navigation ---------- */
+
+.bc-top-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    width: 100%;
+}
+
+.bc-nav-links {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.nav-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    color: var(--text-primary);
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background 0.2s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    background: var(--surface-secondary);
+}
+
+.nav-link svg {
+    flex-shrink: 0;
+}
+
+.bc-more-menu {
+    position: relative;
+}
+
+.bc-more-content {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    z-index: 100;
+    min-width: 180px;
+    padding: 8px;
+    background: var(--surface-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* ---------- Mobile Bottom Navigation ---------- */
+
+.bc-bottom-nav {
+    display: none;
+}
+
+@media (max-width: 767px) {
+    .bc-top-nav .bc-nav-links {
+        display: none;
+    }
+
+    .bc-bottom-nav {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        z-index: 100;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 100%;
+        padding: 10px 4px;
+        padding-bottom: max(10px, env(safe-area-inset-bottom));
+        background: var(--surface-primary);
+        border-top: 1px solid var(--border-color);
+    }
+
+    .bc-bottom-nav .nav-link {
+        flex-direction: column;
+        gap: 4px;
+        padding: 6px;
+        font-size: 11px;
+    }
+
+    body {
+        padding-bottom: 80px;
+    }
+}
+
+/* ---------- Toast Notifications ---------- */
+
+.toast-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: min(360px, calc(100vw - 32px));
+}
+
+.toast {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px;
+    background: var(--surface-primary);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    border-left: 4px solid var(--color-primary);
+    border-radius: 10px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+.toast-success {
+    border-left-color: #16a34a;
+}
+
+.toast-error {
+    border-left-color: #dc2626;
+}
+
+.toast-warning {
+    border-left-color: #d97706;
+}
+
+.toast-info {
+    border-left-color: #2563eb;
+}
+
+.toast-icon {
+    display: flex;
+    flex-shrink: 0;
+}
+
+.toast span:nth-child(2) {
+    flex: 1;
+}
+
+.toast-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+}
+
+/* ---------- Form Validation ---------- */
+
+.is-invalid {
+    border-color: #dc2626 !important;
+    outline-color: #dc2626;
+}
+
+.field-error {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 5px;
+    color: #dc2626;
+    font-size: 13px;
+}
+
+.field-error svg {
+    flex-shrink: 0;
+}
+
+.form-summary {
+    margin-bottom: 16px;
+    padding: 12px 16px;
+    color: #991b1b;
+    background: #fee2e2;
+    border: 1px solid #fecaca;
+    border-radius: 8px;
+}
+
+/* ---------- Demo Banner ---------- */
+
+.bc-demo-banner {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    color: var(--text-primary);
+    background: var(--surface-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 13px;
+}
+
+/* ---------- Skeleton Loader ---------- */
+
+.bc-skeleton {
+    background: linear-gradient(
+        90deg,
+        #e5e7eb 25%,
+        #f3f4f6 50%,
+        #e5e7eb 75%
+    );
+    background-size: 200% 100%;
+    animation: bc-skeleton-loading 1.5s infinite;
+    border-radius: 6px;
+}
+
+.bc-skeleton-text {
+    height: 14px;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.bc-skeleton-title {
+    height: 22px;
+    width: 60%;
+    margin-bottom: 16px;
+}
+
+.bc-skeleton-card {
+    height: 120px;
+    width: 100%;
+}
+
+@keyframes bc-skeleton-loading {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* ---------- Status Badges ---------- */
+
+.bc-status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.bc-status-badge svg {
+    width: 14px;
+    height: 14px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .bc-skeleton {
+        animation: none;
+    }
+
+    .nav-link {
+        transition: none;
+    }
+}
