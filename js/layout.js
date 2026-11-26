@@ -80,6 +80,18 @@
         </div>
       </div>`;
 
+    const publicLinks = [["index.html#how-it-works", "How it works"], ["index.html#roles", "Who it is for"]];
+    const navHtml = cfg ? main.map(deskLink).join("") + moreDesktop
+      : publicLinks.map(([h, l]) => `<a href="${h}" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-100 transition-all ${RING}">${l}</a>`).join("");
+    const rightHtml = cfg ? `
+              <button type="button" aria-label="Notifications" class="relative w-10 h-10 rounded-lg border border-slate-200 text-slate-600 hover:bg-slate-50 flex items-center justify-center ${RING}"><i class="fa-regular fa-bell" aria-hidden="true"></i></button>
+              <div class="flex items-center gap-2.5 pl-3 border-l border-slate-200">
+                <div class="w-9 h-9 rounded-full bg-brand-100 text-brand-800 text-sm font-bold flex items-center justify-center" aria-hidden="true">${esc(initials(userName))}</div>
+                <div class="hidden md:block leading-tight"><div class="text-sm font-semibold text-slate-900" id="bc-user-name"></div><div class="text-xs text-slate-500">${esc(ROLE_LABEL[role])}</div></div>
+              </div>` : `
+              <a href="login.html" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-100 transition-all ${RING}">Log in</a>
+              <a href="register.html" class="bg-brand-800 hover:bg-brand-900 text-white font-medium text-sm px-4 py-2.5 rounded-lg shadow-sm hover:shadow transition-all ${RING}">Register</a>`;
+
     const header = `
       <header class="bg-white border-b border-slate-200 sticky top-0 z-40 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -89,13 +101,8 @@
               <div><span class="text-xl font-bold font-heading text-slate-900 leading-none block">BloodConnect<span class="text-brand-800">Alert</span></span>
                 <span class="hidden sm:block text-[10px] text-slate-500 font-medium tracking-wide uppercase">Emergency Coordination</span></div>
             </a>
-            <nav class="hidden lg:flex items-center space-x-1" aria-label="Main navigation">${main.map(deskLink).join("")}${moreDesktop}</nav>
-            <div class="flex items-center gap-3">
-              <button type="button" aria-label="Notifications" class="relative w-10 h-10 rounded-lg border border-slate-200 text-slate-600 hover:bg-slate-50 flex items-center justify-center ${RING}"><i class="fa-regular fa-bell" aria-hidden="true"></i></button>
-              <div class="flex items-center gap-2.5 pl-3 border-l border-slate-200">
-                <div class="w-9 h-9 rounded-full bg-brand-100 text-brand-800 text-sm font-bold flex items-center justify-center" aria-hidden="true">${esc(initials(userName))}</div>
-                <div class="hidden md:block leading-tight"><div class="text-sm font-semibold text-slate-900" id="bc-user-name"></div><div class="text-xs text-slate-500">${esc(ROLE_LABEL[role] || "Visitor")}</div></div>
-              </div>
+            <nav class="hidden lg:flex items-center space-x-1" aria-label="Main navigation">${navHtml}</nav>
+            <div class="flex items-center gap-3">${rightHtml}
             </div>
           </div>
         </div>
@@ -106,9 +113,10 @@
         <div class="grid" style="grid-template-columns: repeat(${main.length + (more.length ? 1 : 0)}, minmax(0, 1fr))">${main.map(tabLink).join("")}${moreMobile}</div>
       </nav>${sheet}` : "";
 
-    document.body.insertAdjacentHTML("afterbegin", banner + header);
+    const skip = '<a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:left-2 focus:top-2 focus:z-50 focus:bg-white focus:px-4 focus:py-2 focus:rounded-lg focus:shadow">Skip to main content</a>';
+    document.body.insertAdjacentHTML("afterbegin", skip + banner + header);
     document.body.insertAdjacentHTML("beforeend", tabbar);
-    document.getElementById("bc-user-name").textContent = userName;   // safe: no HTML injection
+    const un = document.getElementById("bc-user-name"); if (un) un.textContent = userName;   // safe: no HTML injection
     if (main.length) document.body.classList.add("pb-20", "lg:pb-0"); // room for the tab bar
 
     // "More" menus: open/close, Escape, click outside

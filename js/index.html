@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-slate-50">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BloodConnect Alert | Emergency blood request coordination</title>
+  <meta name="description" content="Submit a verified blood request, alert nearby donors in stages, and track blood stock. Simulated demonstration platform.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="js/tailwind-config.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    h1, h2, h3, h4 { font-family: 'Poppins', sans-serif; }
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .animate-pulse { animation: none; } }
+  </style>
+</head>
+<body class="text-slate-800 bg-slate-50 antialiased">
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="bg-brand-50/70 border-b border-slate-200/80 py-16 md:py-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-100 text-brand-800 text-xs font-semibold uppercase tracking-wider">
+              <span class="w-2 h-2 rounded-full bg-brand-800 animate-pulse"></span> Blood request coordination
+            </div>
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 leading-tight">
+              Connecting urgent <span class="text-brand-800">blood needs</span> with registered donors
+            </h1>
+            <p class="text-lg text-slate-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+              Submit a blood request, get it verified, and alert nearby donors in stages. Blood banks keep reported stock up to date so hospitals can find it.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-2">
+              <a href="register.html?role=requester" class="px-6 py-3.5 rounded-xl bg-brand-800 hover:bg-brand-900 text-white font-semibold shadow-lg shadow-brand-800/25 transition-all flex items-center justify-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-800 focus-visible:ring-offset-2">
+                <i class="fa-solid fa-hand-holding-medical" aria-hidden="true"></i> Submit a blood request
+              </a>
+              <a href="register.html?role=donor" class="px-6 py-3.5 rounded-xl bg-white border border-slate-300 hover:border-brand-800 text-slate-700 hover:text-brand-800 font-semibold transition-all shadow-sm flex items-center justify-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-800 focus-visible:ring-offset-2">
+                <i class="fa-solid fa-user-plus" aria-hidden="true"></i> Register as a donor
+              </a>
+            </div>
+            <div class="pt-4 text-xs text-slate-600 bg-slate-100/80 p-3 rounded-lg border border-slate-200 text-left">
+              <i class="fa-solid fa-circle-info text-slate-600 mr-1" aria-hidden="true"></i>
+              <strong>Important:</strong> BloodConnect Alert does not test blood or decide medical compatibility. Screening and the decision to use any unit are made by the treating facility. This is a whole-blood-only demonstration.
+            </div>
+          </div>
+
+          <div class="lg:col-span-5">
+            <div class="bg-white rounded-2xl p-6 shadow-xl border border-slate-200/80">
+              <div class="flex justify-between items-center mb-4 pb-3 border-b border-slate-100">
+                <h2 class="font-bold text-slate-900 text-sm uppercase tracking-wide">Sample requests</h2>
+                <span class="text-xs bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full font-medium">Demo data</span>
+              </div>
+              <ul class="space-y-3">
+                <li class="p-3.5 rounded-xl bg-red-50/50 border border-red-100 flex items-center justify-between gap-3">
+                  <div class="flex items-center gap-3 min-w-0">
+                    <div class="w-10 h-10 rounded-lg bg-brand-800 text-white font-bold flex items-center justify-center text-sm flex-shrink-0">O-</div>
+                    <div class="min-w-0"><div class="font-semibold text-slate-900 text-sm truncate">Dhaka Medical College Hospital</div><div class="text-xs text-slate-500">2 bags &bull; Emergency &bull; Within 3 km</div></div>
+                  </div>
+                  <span class="text-xs font-semibold text-brand-800 bg-brand-100 px-2.5 py-1 rounded-md whitespace-nowrap"><i class="fa-solid fa-bell text-[10px] mr-1" aria-hidden="true"></i>Alerting</span>
+                </li>
+                <li class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-between gap-3">
+                  <div class="flex items-center gap-3 min-w-0">
+                    <div class="w-10 h-10 rounded-lg bg-slate-800 text-white font-bold flex items-center justify-center text-sm flex-shrink-0">AB+</div>
+                    <div class="min-w-0"><div class="font-semibold text-slate-900 text-sm truncate">Mirpur General Hospital</div><div class="text-xs text-slate-500">1 bag &bull; Urgent &bull; Waiting for review</div></div>
+                  </div>
+                  <span class="text-xs font-semibold text-amber-800 bg-amber-100 px-2.5 py-1 rounded-md whitespace-nowrap"><i class="fa-solid fa-clock text-[10px] mr-1" aria-hidden="true"></i>Pending</span>
+                </li>
+                <li class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-between gap-3">
+                  <div class="flex items-center gap-3 min-w-0">
+                    <div class="w-10 h-10 rounded-lg bg-slate-800 text-white font-bold flex items-center justify-center text-sm flex-shrink-0">B+</div>
+                    <div class="min-w-0"><div class="font-semibold text-slate-900 text-sm truncate">Uttara Community Hospital</div><div class="text-xs text-slate-500">3 bags &bull; Planned &bull; 2 donors accepted</div></div>
+                  </div>
+                  <span class="text-xs font-semibold text-emerald-800 bg-emerald-100 px-2.5 py-1 rounded-md whitespace-nowrap"><i class="fa-solid fa-check text-[10px] mr-1" aria-hidden="true"></i>Approved</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section id="how-it-works" class="py-16 bg-white border-b border-slate-200 scroll-mt-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+          <h2 class="text-3xl font-bold text-slate-900">How it works</h2>
+          <p class="text-slate-600 mt-2">Every request is checked before any donor is contacted.</p>
+        </div>
+        <ol class="grid grid-cols-1 md:grid-cols-4 gap-6">
+          <li class="bg-slate-50 p-6 rounded-2xl border border-slate-200 text-center">
+            <div class="w-12 h-12 rounded-xl bg-brand-100 text-brand-800 font-bold text-xl flex items-center justify-center mx-auto mb-4">1</div>
+            <h3 class="font-bold text-slate-900 mb-2">Request submitted</h3>
+            <p class="text-sm text-slate-600 leading-relaxed">A requester enters the blood group, hospital, number of bags, urgency and the date and time needed.</p>
+          </li>
+          <li class="bg-slate-50 p-6 rounded-2xl border border-slate-200 text-center">
+            <div class="w-12 h-12 rounded-xl bg-brand-100 text-brand-800 font-bold text-xl flex items-center justify-center mx-auto mb-4">2</div>
+            <h3 class="font-bold text-slate-900 mb-2">Verifier review</h3>
+            <p class="text-sm text-slate-600 leading-relaxed">A verifier approves or rejects it. A rejection always comes with a reason shown to the requester.</p>
+          </li>
+          <li class="bg-slate-50 p-6 rounded-2xl border border-slate-200 text-center">
+            <div class="w-12 h-12 rounded-xl bg-brand-100 text-brand-800 font-bold text-xl flex items-center justify-center mx-auto mb-4">3</div>
+            <h3 class="font-bold text-slate-900 mb-2">Staged donor alerts</h3>
+            <p class="text-sm text-slate-600 leading-relaxed">Alerts start within 3 km, then widen to 7 km, 15 km and the whole district. No donor gets the same alert twice.</p>
+          </li>
+          <li class="bg-slate-50 p-6 rounded-2xl border border-slate-200 text-center">
+            <div class="w-12 h-12 rounded-xl bg-brand-100 text-brand-800 font-bold text-xl flex items-center justify-center mx-auto mb-4">4</div>
+            <h3 class="font-bold text-slate-900 mb-2">Facility decides</h3>
+            <p class="text-sm text-slate-600 leading-relaxed">Donors who accept go to the facility. Only authorised staff record screening results and whether a unit is usable.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Who it is for -->
+    <section id="roles" class="py-16 bg-slate-50 scroll-mt-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-10">
+          <h2 class="text-2xl font-bold text-slate-900">Who it is for</h2>
+          <p class="text-sm text-slate-600 mt-1">Choose the account that matches what you do. Each account has one role.</p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <a href="register.html?role=donor" class="p-5 bg-white rounded-xl border border-slate-200 hover:border-brand-800 hover:shadow-md transition-all group focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-800">
+            <div class="w-10 h-10 rounded-lg bg-brand-50 text-brand-800 flex items-center justify-center mb-3 group-hover:bg-brand-800 group-hover:text-white transition-colors"><i class="fa-solid fa-user" aria-hidden="true"></i></div>
+            <h3 class="font-bold text-slate-900 text-sm">Donor</h3>
+            <p class="text-sm text-slate-600 mt-1">Set your availability and area, and respond to alerts that match your blood group.</p>
+          </a>
+          <a href="register.html?role=requester" class="p-5 bg-white rounded-xl border border-slate-200 hover:border-brand-800 hover:shadow-md transition-all group focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-800">
+            <div class="w-10 h-10 rounded-lg bg-brand-50 text-brand-800 flex items-center justify-center mb-3 group-hover:bg-brand-800 group-hover:text-white transition-colors"><i class="fa-solid fa-hand-holding-medical" aria-hidden="true"></i></div>
+            <h3 class="font-bold text-slate-900 text-sm">Requester</h3>
+            <p class="text-sm text-slate-600 mt-1">Submit a blood request and follow its status from review to fulfilment.</p>
+          </a>
+          <a href="register.html?role=hospital" class="p-5 bg-white rounded-xl border border-slate-200 hover:border-brand-800 hover:shadow-md transition-all group focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-800">
+            <div class="w-10 h-10 rounded-lg bg-brand-50 text-brand-800 flex items-center justify-center mb-3 group-hover:bg-brand-800 group-hover:text-white transition-colors"><i class="fa-solid fa-hospital" aria-hidden="true"></i></div>
+            <h3 class="font-bold text-slate-900 text-sm">Hospital</h3>
+            <p class="text-sm text-slate-600 mt-1">Search reported stock at blood banks and send inquiries. Starts as pending verification.</p>
+          </a>
+          <a href="register.html?role=bank" class="p-5 bg-white rounded-xl border border-slate-200 hover:border-brand-800 hover:shadow-md transition-all group focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-800">
+            <div class="w-10 h-10 rounded-lg bg-brand-50 text-brand-800 flex items-center justify-center mb-3 group-hover:bg-brand-800 group-hover:text-white transition-colors"><i class="fa-solid fa-box-archive" aria-hidden="true"></i></div>
+            <h3 class="font-bold text-slate-900 text-sm">Blood Bank</h3>
+            <p class="text-sm text-slate-600 mt-1">Record donations, track units and stock, and answer hospital inquiries. Starts as pending verification.</p>
+          </a>
+        </div>
+        <p class="text-center text-sm text-slate-500 mt-6">Verifier and Admin accounts are created by an Admin and cannot be registered here.</p>
+      </div>
+    </section>
+
+    <!-- What it does not do -->
+    <section class="pb-16 bg-slate-50">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 md:p-8">
+          <h2 class="text-lg font-bold text-slate-900 mb-3"><i class="fa-solid fa-shield-halved text-brand-800 mr-2" aria-hidden="true"></i>What this demonstration does not do</h2>
+          <ul class="grid sm:grid-cols-2 gap-x-8 gap-y-2 text-sm text-slate-600 list-disc pl-5">
+            <li>It does not make medical or compatibility decisions.</li>
+            <li>Reported availability is not a reservation.</li>
+            <li>SMS, email and push messages are simulated.</li>
+            <li>It connects to no real hospital or blood bank system.</li>
+            <li>It handles whole blood only, not components.</li>
+            <li>All people, hospitals and quantities are sample data.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-white border-t border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-xs text-slate-500 flex flex-col sm:flex-row justify-between gap-2">
+      <span>BloodConnect Alert. Individual Web Programming project, Independent University, Bangladesh.</span>
+      <span>Simulated demonstration platform. Not for real emergencies.</span>
+    </div>
+  </footer>
+
+  <script src="js/layout.js"></script>
+  <script>BC.renderShell({});</script>
+</body>
+</html>
