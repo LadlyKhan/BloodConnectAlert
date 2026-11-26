@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 /* Design tokens. Source: Day 1 handoff, decisions 11 and 12, defaults 14.2. 8px grid. */
 :root {
   /* Palette (decision 11) */
@@ -36,8 +37,7 @@
   --shadow: 0 1px 2px rgba(27, 42, 65, 0.08);
 
   /* One type scale, system font stack */
-  --font: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", Arial, sans-serif;
-  --fs-sm: 0.875rem;
+  --font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", Arial, sans-serif;  --fs-sm: 0.875rem;
   --fs-base: 1rem;
   --fs-lg: 1.25rem;
   --fs-xl: 1.5rem;
@@ -50,6 +50,24 @@
   --surface-secondary: var(--grey-bg);
   --border-color: var(--border);
   --color-primary: var(--crimson);
+  
+  /* Polish tokens (Day 2 UI polish) */
+  --crimson-50: #FDF2F3;
+  --crimson-100: #FBE4E6;
+  --crimson-200: #F3C4C9;
+  --border-soft: #E5E8EC;
+  --header-bg: #FFFFFF;
+
+  --shadow-md: 0 4px 12px rgba(27, 42, 65, 0.10);
+  --shadow-lg: 0 10px 24px rgba(27, 42, 65, 0.12);
+  --radius-pill: 999px;
+
+  --fs-xs: 0.75rem;
+  --fs-2xl: 1.875rem;
+  --fs-3xl: 2.25rem;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
 }
 
 
