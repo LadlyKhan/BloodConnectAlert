@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-slate-50">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shell test | BloodConnect Alert</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="js/tailwind-config.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style> body { font-family: 'Inter', sans-serif; } h1, h2, h3 { font-family: 'Poppins', sans-serif; } </style>
+</head>
+<body class="text-slate-800 bg-slate-50 antialiased">
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <h1 class="text-2xl font-bold text-slate-900">Shell test</h1>
+    <p class="text-sm text-slate-500 mt-1">Temporary page. Pick a role to preview its header and mobile tab bar.</p>
+    <div class="flex flex-wrap gap-2 mt-4">
+      <a class="px-3 py-1.5 rounded-lg border border-slate-300 text-sm hover:border-brand-800" href="?role=donor">Donor</a>
+      <a class="px-3 py-1.5 rounded-lg border border-slate-300 text-sm hover:border-brand-800" href="?role=requester">Requester</a>
+      <a class="px-3 py-1.5 rounded-lg border border-slate-300 text-sm hover:border-brand-800" href="?role=verifier">Verifier</a>
+      <a class="px-3 py-1.5 rounded-lg border border-slate-300 text-sm hover:border-brand-800" href="?role=hospital">Hospital</a>
+      <a class="px-3 py-1.5 rounded-lg border border-slate-300 text-sm hover:border-brand-800" href="?role=bank">Blood Bank</a>
+      <a class="px-3 py-1.5 rounded-lg border border-slate-300 text-sm hover:border-brand-800" href="?role=admin">Admin</a>
+    </div>
+  </main>
+
+  <script src="js/layout.js"></script>
+  <script>
+    const names = { donor: "Tanvir Ahmed", requester: "Nusrat Jahan", verifier: "Farhana Akter",
+                    hospital: "City Care Hospital", bank: "Dhaka Central Blood Bank", admin: "System Admin" };
+    const role = new URLSearchParams(location.search).get("role") || "donor";
+    BC.renderShell({ role: role, page: role + "-home", userName: names[role] });
+  </script>
+</body>
+</html>
